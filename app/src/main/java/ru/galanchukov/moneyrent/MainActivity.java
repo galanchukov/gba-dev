@@ -193,10 +193,10 @@ public class MainActivity extends Activity {
             .setMessage("Баланс будет пересчитан по оставшимся записям.")
             .setNegativeButton("Нет", null)
             .setPositiveButton("Отменить", (d, w) -> {
+                JSONArray old = entries;
                 entries = new JSONArray();
                 earned = 0; rent = 0; life = 0; expenses = 0;
                 // Rebuild balances from all records except the last one.
-                JSONArray old = entries;
                 for (int i = 0; i < old.length() - 1; i++) {
                     JSONObject item = old.optJSONObject(i);
                     if (item == null) continue;
